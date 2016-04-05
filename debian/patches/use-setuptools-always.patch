@@ -1,0 +1,53 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ jupyter-client (4.2.2-1) UNRELEASED; urgency=medium
+ .
+   * Initial release. (Closes: #XXXXXX)
+Author: David Douard <david.douard@logilab.fr>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+Index: jupyter_client/setup.py
+===================================================================
+--- jupyter_client.orig/setup.py
++++ jupyter_client/setup.py
+@@ -70,8 +70,7 @@ setup_args = dict(
+     ],
+ )
+ 
+-if 'develop' in sys.argv or any(a.startswith('bdist') for a in sys.argv):
+-    import setuptools
++import setuptools
+ 
+ setuptools_args = {}
+ install_requires = setuptools_args['install_requires'] = [
+@@ -86,9 +85,12 @@ extras_require = setuptools_args['extras
+ 
+ if 'setuptools' in sys.modules:
+     setup_args.update(setuptools_args)
++    cliversion = ''
++    if sys.version_info[0] > 2:
++        cliversion = '3'
+     setup_args['entry_points'] = {
+         'console_scripts': [
+-            'jupyter-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance',
++            'jupyter{0}-kernelspec = jupyter_client.kernelspecapp:KernelSpecApp.launch_instance'.format(cliversion),
+         ]
+     }
+     setup_args.pop('scripts', None)
