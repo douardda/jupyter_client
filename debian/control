@@ -1,0 +1,54 @@
+Source: jupyter-client
+Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Uploaders: David Douard <david.douard@logilab.fr>
+Priority: optional
+Section: python
+Standards-Version: 3.9.6
+Homepage: https://github.com/jupyter/jupyter_client
+Build-Depends: 
+  debhelper (>= 9),
+  dh-exec,
+  dh-python,
+  sphinx-common,
+  python,
+  python-traitlets,
+  python-jupyter-core,
+  python-setuptools,
+  python-zmq (>= 13),
+  python-sphinx,
+  python3-all,
+  python3-setuptools,
+  python3-traitlets,
+  python3-jupyter-core,
+  python3-zmq (>= 13),
+X-Python-Version: >= 2.7
+X-Python3-Version: >= 3.2
+
+Package: python-jupyter-client
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Reference implementation of the Jupyter protocol (Python 2 version)
+ It also provides client and kernel management APIs for working with kernels.
+ .
+ It also provides the jupyter kernelspec entrypoint for installing kernelspecs 
+ for use with Jupyter frontends.
+
+Package: python3-jupyter-client
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Reference implementation of the Jupyter protocol (Python 3 version)
+ It also provides client and kernel management APIs for working with kernels.
+ .
+ It also provides the jupyter kernelspec entrypoint for installing kernelspecs 
+ for use with Jupyter frontends.
+
+Package: python-jupyter-client-doc
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Reference implementation of the Jupyter protocol (Python 2 version)
+ It also provides client and kernel management APIs for working with kernels.
+ .
+ It also provides the jupyter kernelspec entrypoint for installing kernelspecs 
+ for use with Jupyter frontends.
+ .
+ This package contains the documentation.
